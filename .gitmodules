@@ -7,3 +7,6 @@
 [submodule "transfer-service"]
 	path = transfer-service
 	url = git@github.com:team-pandora/transfer-service.git
+[submodule "api-gateway"]
+	path = api-gateway
+	url = git@github.com:team-pandora/api-gateway.git
