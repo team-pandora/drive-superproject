@@ -1,0 +1,9 @@
+[submodule "storage-service"]
+	path = storage-service
+	url = git@github.com:team-pandora/storage-service.git
+[submodule "file-service"]
+	path = file-service
+	url = git@github.com:team-pandora/file-service.git
+[submodule "transfer-service"]
+	path = transfer-service
+	url = git@github.com:team-pandora/transfer-service.git
