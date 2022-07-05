@@ -1,3 +1,5 @@
+version: '3.4'
+
 services:
   #-------------------------------------------#
   #    Service infrastructure dependencies    #
@@ -6,23 +8,22 @@ services:
     image: mongo
     restart: always
     command: "--replSet rs0 --bind_ip_all"
-    ports:
-      - 27017:27017
 
   mongosetup:
     image: mongo
     depends_on:
       - mongo
-    volumes:
-      - ./scripts:/scripts
-    restart: "no"
-    entrypoint: "bash /scripts/setup_mongo.sh"
+    restart: "on-failure"
+    command: >
+      mongo --host mongo:27017 --eval 
+      '
+        config = { "_id" : "rs0", "members" : [ { "_id" : 0, "host" : "mongo:27017" } ] };
+        rs.initiate(config);
+      '
 
   minio:
     image: minio/minio
     container_name: minio
-    volumes:
-      - ./data:/data
     ports:
       - 9000:9000
       - 3000:3000
