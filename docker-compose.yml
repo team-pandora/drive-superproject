@@ -49,15 +49,17 @@ services:
     environment:
       NODE_TLS_REJECT_UNAUTHORIZED: 0
       PORT: 8000
-      FILE_SERVICE_URL: http://file-service:8000/api
-      STORAGE_SERVICE_URL: http://storage-service:8000/api
+      FS_CRUD_URL: http://fs-crud:8000
+      STORAGE_SERVICE_URL: http://storage-service:8000
       SPIKE_ENABLED: true
       SPIKE_AUDIENCE: 2rYAQb~MpuJ5JDk~yBc2tk6wgajjPy
       SPIKE_PUBLIC_KEY_DOWNLOAD_URI: https://ospike.northeurope.cloudapp.azure.com/.well-known/publickey.pem
       SHRAGA_ENABLED: true
       SHRAGA_URL: https://shraga.shraga.branch-yesodot.org
-      SHRAGA_CALLBACK_URL: http://api-gateway:8000/auth/callback
+      SHRAGA_CALLBACK_URL: http://localhost/auth/callback
       LINK_SECRET: secret
+      SPIKE_CLIENTS_API_SCOPE: api
+      KARTOFFEL_URL: http://kartoffel.branch-yesodot.org
 
   fs-crud:
     # image: ghcr.io/team-pandora/fs-crud:latest
